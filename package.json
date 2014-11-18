@@ -1,0 +1,10 @@
+{
+  "name": "Challenges",
+  "version": "0.0.0",
+  "description": "A set of fun programming challenges in TypeScript. Intended as a learning exercise.",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Giancarlo Anemone",
+  "license": "BSD-2-Clause"
+}
