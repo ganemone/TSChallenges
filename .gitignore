@@ -1,3 +1,8 @@
+# IDE related files
 .idea
-*.map
+
+# Compiled Javascript Files
 build/
+
+# Node Related Files
+node_modules/
