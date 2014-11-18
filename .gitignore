@@ -6,3 +6,6 @@ build/
 
 # Node Related Files
 node_modules/
+
+# Typescript type definitions
+typings/
