@@ -5,13 +5,14 @@
 // References
 /// <reference path="../../typings/jest/jest.d.ts" />
 
+jest.dontMock('assert');
+jest.dontMock('../CoolString.js');
+
 // Imports
 import CoolString = require('../CoolString');
 
 // Requires
 var assert = require('assert');
-
-jest.dontMock('../CoolString.js');
 
 describe('CoolString reverse function', () => {
     it('should reverse a 1 character string correctly', () => {
