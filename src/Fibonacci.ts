@@ -18,13 +18,7 @@ class Fib implements IFib {
     }
 }
 
-var fib = new Fib();
-
-console.log('Fib of 0', fib.fibonacci(0));
-console.log('Fib of 1', fib.fibonacci(1));
-console.log('Fib of 2', fib.fibonacci(2));
-console.log('Fib of 3', fib.fibonacci(3));
-console.log('Fib of 4', fib.fibonacci(4));
+export = Fib;
 
 
 

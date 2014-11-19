@@ -1,18 +1,18 @@
-interface INode {
+interface ILLItem {
   data:any
-  next:Node
+  next:LLItem
 }
 
 interface ILinkedList {
-  insert:(data: any) => any
-  delete:(node: Node) => any
-  head: Node
+  insert:(data: LLItem) => any
+  delete:(node: LLItem) => any
+  head: LLItem
 }
 
-class Node implements INode {
-  data:any;
-  next:Node;
-  constructor(data:any, next:Node) {
+class LLItem implements ILLItem {
+  data:any
+  next:LLItem;
+  constructor(data:any, next:LLItem) {
     this.data = data;
     this.next = next;
   }
@@ -22,28 +22,28 @@ class Node implements INode {
 }
 
 class LinkedList implements ILinkedList {
-  head:Node;
-  constructor(head:Node) {
+  head:LLItem;
+  constructor(head:LLItem) {
     this.head = head;
   }
   private _getTail() {
-    var current: Node = this.head;
+    var current: LLItem = this.head;
     while(current.hasNext()) {
       current = current.next;
     }
     return current;
   }
   insert(data: any) {
-    var tail: Node = this._getTail();
-    tail.next = new Node(data, null);
+    var tail: LLItem = this._getTail();
+    tail.next = new LLItem(data, null);
   }
-  delete(node: Node) {
+  delete(node: LLItem) {
     if (this.head === node) {
       return this._deleteHead();
     }
 
-    var current: Node = this.head.next;
-    var prev: Node = this.head;
+    var current: LLItem = this.head.next;
+    var prev: LLItem = this.head;
 
     while(current.hasNext()) {
       if(current === node) {
@@ -56,11 +56,11 @@ class LinkedList implements ILinkedList {
   private _deleteHead() {
     this.head = this.head.next;
   }
-  private _delete(prev: Node, node: Node) {
+  private _delete(prev: LLItem, node: LLItem) {
     prev.next = node.next;
   }
-  contains(node:Node):Boolean {
-    var current: Node = this.head;
+  contains(node:LLItem):Boolean {
+    var current: LLItem = this.head;
     while (current.hasNext()) {
       if (current === node) {
         return true;
@@ -69,7 +69,7 @@ class LinkedList implements ILinkedList {
     return false;
   }
   containsData(data:any):Boolean {
-    var current: Node = this.head;
+    var current: LLItem = this.head;
     while (current.hasNext()) {
       if (current.data === data) {
         return true;
