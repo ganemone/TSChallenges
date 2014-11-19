@@ -1,6 +1,15 @@
 /**
- * Created by ganemone on 11/18/14.
- */
+* Created by ganemone on 11/18/14.
+*/
+
+
+interface ICoolStringCB {
+    (left:string, right:string): boolean
+}
+
+interface IIndexEachCB {
+    (left:number, right:number): boolean
+}
 
 interface ICoolString {
     data: string
@@ -12,35 +21,31 @@ interface ICoolString {
     print(): void
 }
 
-interface ICoolStringCB {
-    (left: string, right: string): boolean
-}
-
-interface IIndexEachCB {
-    (left: number, right: number): boolean
-}
-
 class CoolString implements ICoolString {
     public data;
-    constructor(data: string) {
+
+    constructor(data:string) {
         this.data = data;
     }
+
     eachCharFromBothEnds(cb:ICoolStringCB) {
         this.eachIndexFromBothEnds((start:number, end:number) => {
             return cb(this.data.charAt(start), this.data.charAt(end));
         });
     }
+
     eachIndexFromBothEnds(cb:IIndexEachCB) {
         var start = 0;
         var end = this.data.length - 1;
         while (start < this.data.length / 2 && start !== end) {
-            if(!cb(start, end)) {
+            if (!cb(start, end)) {
                 return;
             }
             start++;
             end--;
         }
     }
+
     reverse() {
         var reversed = [];
         for (var i = this.data.length - 1; i >= 0; i--) {
@@ -48,6 +53,7 @@ class CoolString implements ICoolString {
         }
         this.data = reversed.join('');
     }
+
     reverseInPlace() {
         var dataArr = this.data.split('');
 
@@ -61,6 +67,7 @@ class CoolString implements ICoolString {
 
         this.data = dataArr.join('');
     }
+
     isPalindrome():boolean {
         var isPalindrome:boolean = true;
         this.eachCharFromBothEnds((left:string, right:string):boolean => {
@@ -74,31 +81,10 @@ class CoolString implements ICoolString {
         });
         return isPalindrome;
     }
+
     print() {
         console.log(this.data);
     }
 }
 
-var coolString = new CoolString('LOL THIS SHOULD WORK');
-console.log('Original');
-coolString.print();
-coolString.reverse();
-console.log('Reversed');
-coolString.print();
-coolString.reverseInPlace();
-console.log('Re-Reversed in Place');
-coolString.print();
-
-console.log('Should be false: ', coolString.isPalindrome());
-
-coolString = new CoolString('LOL');
-
-console.log('Should be true: ', coolString.isPalindrome());
-
-coolString = new CoolString('racecar');
-
-console.log('Should be true: ', coolString.isPalindrome());
-
-coolString = new CoolString('LooL');
-
-console.log('Should be true: ', coolString.isPalindrome());
+export = CoolString;
