@@ -12,10 +12,10 @@ var assert = require('assert');
 
 describe('LLItem constructor', function () {
   it('should create an LLItem without a next item', function () {
-    var item = new LLItem('item');
+    var item = new LLItem('item', null);
   });
   it('should create an LLItem with a next item', function () {
-    var tail = new LLItem('tail');
+    var tail = new LLItem('tail', null);
     var middle = new LLItem('middle', tail);
     var head = new LLItem('head', middle);
     assert.equal(head.data, 'head');
