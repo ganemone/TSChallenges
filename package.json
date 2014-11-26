@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "A set of fun programming challenges in TypeScript. Intended as a learning exercise.",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "grunt typescript",
+    "watch": "grunt watch"
   },
   "author": "Giancarlo Anemone",
   "license": "BSD-2-Clause",

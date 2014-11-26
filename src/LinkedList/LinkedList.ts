@@ -1,24 +1,9 @@
-interface ILLItem {
-  data:any
-  next:LLItem
-}
+import LLItem = require('./LLItem');
 
 interface ILinkedList {
   insert:(data: LLItem) => any
   delete:(node: LLItem) => any
   head: LLItem
-}
-
-class LLItem implements ILLItem {
-  data:any
-  next:LLItem;
-  constructor(data:any, next:LLItem) {
-    this.data = data;
-    this.next = next;
-  }
-  hasNext() {
-    return (!!this.next)
-  }
 }
 
 class LinkedList implements ILinkedList {
@@ -78,3 +63,5 @@ class LinkedList implements ILinkedList {
     return false;
   }
 }
+
+export = LinkedList;
